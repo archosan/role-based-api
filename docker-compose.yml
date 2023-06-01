@@ -1,0 +1,23 @@
+version:  3.0.0
+
+services:
+  api:
+    container_name: role-based-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3555:3555
+    environment:
+      JWT_SECRET: secret
+  db:
+    container_name: role-based-db
+    image: mongo
+    ports:
+      - 27011:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      restart: always
+    
+    
